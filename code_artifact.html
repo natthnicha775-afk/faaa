@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="th" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidpreneur! เส้นทางนักธุรกิจรุ่นจิ๋ว 🚀🍭</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // กำหนดการตั้งค่า Tailwind สำหรับ Dark Mode ด้วยคลาส
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'bounce-slow': 'bounce 2.5s infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons for beautiful UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Prompt (Thai/English font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .active-nav {
+            color: #d946ef; /* Fuchsia 500 */
+            border-bottom: 3px dashed #d946ef;
+        }
+        /* สมูททรานซิชันสำหรับเปลี่ยนธีม */
+        .theme-transition, .theme-transition * {
+            transition: background-color 0.3s ease, border-color 0.3s ease, text-color 0.3s ease, fill 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-amber-50/50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 theme-transition">
+
+    <!-- NAV BAR (Responsive Header) -->
+    <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md shadow-md border-b-4 border-yellow-300 dark:border-purple-600 theme-transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center space-x-2">
+                    <div class="bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 text-white p-2.5 rounded-2xl animate-bounce-slow">
+                        <i class="fa-solid fa-gamepad text-2xl"></i>
+                    </div>
+                    <span class="font-extrabold text-2xl tracking-tight text-slate-900 dark:text-white">Kid<span class="text-fuchsia-500 dark:text-fuchsia-400">preneur!</span></span>
+                </div>
+                
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-6 text-base font-bold">
+                    <a href="#hero" class="nav-link text-slate-600 dark:text-slate-300 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 transition-colors py-2">🌈 หน้าแรก</a>
+                    <a href="#mindset" class="nav-link text-slate-600 dark:text-slate-300 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 transition-colors py-2">🧠 พลังสมองจิ๋ว</a>
+                    <a href="#steps" class="nav-link text-slate-600 dark:text-slate-300 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 transition-colors py-2">🍭 5 ขั้นตอน</a>
+                    <a href="#business-canvas" class="nav-link text-slate-600 dark:text-slate-300 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 transition-colors py-2">🗺️ แผนที่ร้าน</a>
+                    <a href="#ai-clinic" class="nav-link text-purple-600 dark:text-purple-400 hover:text-purple-700 transition-colors py-2 font-black flex items-center gap-1">
+                        <i class="fa-solid fa-wand-magic-sparkles text-sm animate-spin"></i> สัตว์เลี้ยง AI
+                    </a>
+                    <a href="#quiz" class="nav-link text-slate-600 dark:text-slate-300 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 transition-colors py-2 font-bold">🏆 เกมทดสอบ</a>
+                    
+                    <!-- Day/Night Mode Toggle (Desktop) -->
+                    <button id="theme-toggle-desktop" class="p-2.5 rounded-full bg-yellow-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:scale-110 active:scale-95 transition-transform focus:outline-none" title="เปลี่ยนเวลาเป็นกลางวัน/กลางคืน">
+                        <i id="theme-icon-desktop" class="fa-solid fa-sun text-xl text-amber-500"></i>
+                    </button>
+                </nav>
+
+                <!-- Mobile Header Right Actions -->
+                <div class="flex items-center space-x-2 md:hidden">
+                    <!-- Day/Night Mode Toggle (Mobile Menu Bar) -->
+                    <button id="theme-toggle-mobile-bar" class="p-2.5 rounded-full bg-yellow-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:scale-110 transition-transform focus:outline-none" title="เปลี่ยนเวลาเป็นกลางวัน/กลางคืน">
+                        <i id="theme-icon-mobile-bar" class="fa-solid fa-sun text-xl text-amber-500"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-fuchsia-500 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+                        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t-2 border-yellow-200 dark:border-slate-800 px-4 pt-2 pb-4 space-y-2 shadow-inner theme-transition font-bold">
+            <a href="#hero" class="block px-3 py-2.5 rounded-xl text-base text-slate-700 dark:text-slate-300 hover:bg-pink-100 dark:hover:bg-slate-800 hover:text-pink-600 dark:hover:text-pink-400 transition-colors">🌈 หน้าแรก</a>
+            <a href="#mindset" class="block px-3 py-2.5 rounded-xl text-base text-slate-700 dark:text-slate-300 hover:bg-yellow-100 dark:hover:bg-slate-800 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">🧠 พลังสมองจิ๋ว</a>
+            <a href="#steps" class="block px-3 py-2.5 rounded-xl text-base text-slate-700 dark:text-slate-300 hover:bg-emerald-100 dark:hover:bg-slate-800 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">🍭 5 ขั้นตอนเปิดร้าน</a>
+            <a href="#business-canvas" class="block px-3 py-2.5 rounded-xl text-base text-slate-700 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-800 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">🗺️ แผนที่ร้านของหนู</a>
+            <a href="#ai-clinic" class="block px-3 py-2.5 rounded-xl text-base text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-slate-800 transition-colors">✨ สัตว์เลี้ยงที่ปรึกษา AI</a>
+            <a href="#quiz" class="block px-3 py-2.5 rounded-xl text-base text-slate-700 dark:text-slate-300 hover:bg-rose-100 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">🏆 เกมทดสอบเถ้าแก่น้อย</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        
+        <!-- HERO SECTION (หน้าแรก) -->
+        <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-sky-400 via-indigo-500 to-purple-600 text-white py-20 lg:py-28 rounded-b-[40px] md:rounded-b-[80px] shadow-lg">
+            <!-- Background Icons Floating decoration -->
+            <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <span class="inline-block px-4 py-1.5 bg-yellow-400/90 text-slate-950 rounded-full text-sm font-black uppercase tracking-wider animate-bounce shadow-md">
+                            🎯 ยินดีต้อนรับสู่อาณาจักรเถ้าแก่น้อย!
+                        </span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                            เปลี่ยนจินตนาการสุดเจ๋ง <br>
+                            <span class="text-yellow-300 bg-gradient-to-r from-yellow-300 via-pink-300 to-sky-300 bg-clip-text text-transparent">เป็นร้านค้าสุดปังกันเถอะ! 🍭🦖</span>
+                        </h1>
+                        <p class="text-base sm:text-lg text-sky-100 max-w-2xl mx-auto lg:mx-0 font-medium">
+                            การเป็นเจ้าของร้านสนุกกว่าที่คิดนะ! ไม่ว่าหนูจะอยากทำขนมเค้กแสนอร่อย ทำสไลม์สุดวิเศษ หรือขายไอติมดับร้อน ทุกอย่างเริ่มต้นง่ายๆ แค่สนุกไปกับวิธีคิดและคู่มือสัตว์เลี้ยง AI สุดน่ารัก!
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4 font-extrabold text-sm sm:text-base">
+                            <a href="#ai-clinic" class="px-8 py-4 bg-yellow-400 text-slate-900 rounded-2xl hover:bg-yellow-300 transform hover:scale-105 active:scale-95 transition-all shadow-lg shadow-yellow-500/35 text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paw animate-wiggle"></i> ปรึกษาคู่หูสัตว์เลี้ยง AI จิ๋ว
+                            </a>
+                            <a href="#quiz" class="px-8 py-4 bg-sky-500 text-white border border-sky-400 rounded-2xl hover:bg-sky-600 transform hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25">
+                                <i class="fa-solid fa-gamepad"></i> เล่นเกมทายใจเถ้าแก่น้อย
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Decorative Graphic -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+                            <!-- Gradient Blobs -->
+                            <div class="absolute inset-0 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-pulse"></div>
+                            <div class="absolute inset-10 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-75"></div>
+                            <!-- Kid Core Card -->
+                            <div class="absolute inset-0 flex flex-col justify-center items-center bg-white/10 border-4 border-white/30 rounded-[40px] p-8 shadow-2xl backdrop-blur-md">
+                                <span class="text-7xl mb-4 animate-bounce">🍦🧸🤖</span>
+                                <h3 class="text-2xl font-black mb-2 text-yellow-300">ความสนุกกำลังเริ่ม!</h3>
+                                <p class="text-sky-100 text-center text-xs leading-relaxed">
+                                    "เรียนรู้วิธีการทำกำไรเหรียญทอง สะสมแต้มความดี และช่วยเหลือเพื่อนๆ ด้วยสินค้าสุดประทับใจของตัวเราเอง!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: MINDSET & SKILLS (แนวคิดและทักษะที่ต้องมี) -->
+        <section id="mindset" class="py-20 bg-white dark:bg-slate-900 border-b-4 border-dashed border-yellow-200 dark:border-slate-800 theme-transition">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-5xl">⚡</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                        4 พลังวิเศษของ 'นักธุรกิจรุ่นจิ๋ว' (Superpowers)
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300">
+                        อยากเปิดร้านให้เจ๋งเป้ง หนูต้องมีอาวุธสมองวิเศษ 4 ประการนี้ไว้ติดตัวนะจ๊ะ!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-pink-50/75 dark:bg-slate-800 border-4 border-pink-100 dark:border-pink-900/40 p-8 rounded-[32px] hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-pink-500 text-white flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transform transition-transform shadow-md">
+                            <i class="fa-solid fa-seedling text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-pink-600 dark:text-pink-400 mb-3">สมองโตไม่กลัวแพ้!</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            (Growth Mindset) ถึงขนมจะเค้กจะแบน คุกกี้จะไหม้ หนูจะไม่ยอมแพ้! จะขอลองสูตรใหม่ด้วยรอยยิ้มเสมอ
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-yellow-50/80 dark:bg-slate-800 border-4 border-yellow-100 dark:border-yellow-900/40 p-8 rounded-[32px] hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-yellow-400 text-slate-900 flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transform transition-transform shadow-md">
+                            <i class="fa-solid fa-puzzle-piece text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-amber-600 dark:text-amber-400 mb-3">ยอดนักแก้ปัญหา!</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            (Problem Solving) ร้านค้าเกิดมาเพื่อช่วยคนอื่น เช่น ยามบ่ายร้อนๆ เราจะปั่นไอติมเย็นๆ มามอบรอยยิ้มให้ทุกคน
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-emerald-50/75 dark:bg-slate-800 border-4 border-emerald-100 dark:border-emerald-900/40 p-8 rounded-[32px] hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-emerald-500 text-white flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transform transition-transform shadow-md">
+                            <i class="fa-solid fa-coins text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 mb-3">ผู้พิทักษ์เหรียญทอง!</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            (Financial Literacy) แบ่งเหรียญทองเป็น 3 ส่วน: ซื้อวัตถุดิบ, เก็บออมใส่กระปุกหมู, และให้รางวัลความตั้งใจของตัวเอง
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-sky-50/75 dark:bg-slate-800 border-4 border-sky-100 dark:border-sky-900/40 p-8 rounded-[32px] hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-sky-400 text-white flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transform transition-transform shadow-md">
+                            <i class="fa-solid fa-arrows-spin text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-sky-600 dark:text-sky-400 mb-3">แปลงร่างได้ใจดี!</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            (Adaptability) ถ้าวันนี้คนไม่ชอบสไลม์สีชมพู เราจะปรับมาทำสีเรืองแสงลายอวกาศวิบวับแทนเพื่อความตื่นเต้น!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: STEPS TO START (ขั้นตอนการเริ่มต้นธุรกิจ) -->
+        <section id="steps" class="py-20 bg-yellow-50/30 dark:bg-slate-950 border-b-4 border-dashed border-sky-200 dark:border-slate-800 theme-transition">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-5xl">🍭🎮</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                        5 ด่านสุดง่ายในการเปิดร้านค้าแรกรังนกจิ๋ว!
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300">
+                        จากไอเดียฟุ้งซ่านในหัว มาผจญภัยผ่านด่านทั้ง 5 ด่านไปด้วยกันเลยฮะ
+                    </p>
+                </div>
+
+                <!-- Timeline / Steps -->
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical Line (Desktop only) -->
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1.5 h-full bg-gradient-to-b from-pink-400 via-yellow-400 to-sky-400 rounded-full"></div>
+
+                    <!-- Step 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16">
+                        <div class="w-full md:w-[45%] order-2 md:order-1 text-center md:text-right bg-white dark:bg-slate-900 p-6 rounded-3xl border-4 border-pink-200 shadow-md">
+                            <h4 class="text-lg font-black text-pink-500 mb-2">⭐ ด่านที่ 1: ค้นหาไอเดียสุดเจ๋ง!</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                ลองคิดดูซิว่าของเล่นอะไรที่หนูชอบเล่น หรือขนมอะไรที่เพื่อนๆ แย่งกันกินบ่อยๆ นั่นแหละคือเบาะแสแรกของหนู!
+                            </p>
+                        </div>
+                        <div class="z-10 flex items-center justify-center w-14 h-14 rounded-2xl bg-pink-500 text-white text-xl font-black order-1 md:order-2 my-4 md:my-0 shadow-lg shadow-pink-500/30">
+                            1
+                        </div>
+                        <div class="hidden md:block w-[45%] order-3"></div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16">
+                        <div class="hidden md:block w-[45%] order-1"></div>
+                        <div class="z-10 flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-400 text-slate-900 text-xl font-black order-1 md:order-2 my-4 md:my-0 shadow-lg shadow-yellow-400/30">
+                            2
+                        </div>
+                        <div class="w-full md:w-[45%] order-2 md:order-3 text-center md:text-left bg-white dark:bg-slate-900 p-6 rounded-3xl border-4 border-yellow-300 shadow-md">
+                            <h4 class="text-lg font-black text-amber-500 mb-2">🎈 ด่านที่ 2: ถามใจเพื่อนและส่องร้านข้างบ้าน</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                ไปคุยกับเพื่อนๆ ว่าพวกเขาอยากได้อะไร แล้วแอบดูว่าร้านอื่นเขาขายราคาเท่าไหร่กันบ้าง เพื่อวางแผนขายของให้เจ๋งกว่า!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16">
+                        <div class="w-full md:w-[45%] order-2 md:order-1 text-center md:text-right bg-white dark:bg-slate-900 p-6 rounded-3xl border-4 border-emerald-200 shadow-md">
+                            <h4 class="text-lg font-black text-emerald-500 mb-2">🗺️ ด่านที่ 3: วาดแผนที่ร้านลายแทง</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                ร่างแผนการง่ายๆ บนกระดาษแผ่นเดียว (Kid Canvas) ว่าจะตั้งราคาเท่าไหร่ มีต้นทุนค่าน้ำตาล ค่านมกี่เหรียญทอง และใครจะมาช่วยเราบ้าง
+                            </p>
+                        </div>
+                        <div class="z-10 flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-500 text-white text-xl font-black order-1 md:order-2 my-4 md:my-0 shadow-lg shadow-emerald-500/30">
+                            3
+                        </div>
+                        <div class="hidden md:block w-[45%] order-3"></div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16">
+                        <div class="hidden md:block w-[45%] order-1"></div>
+                        <div class="z-10 flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-400 text-white text-xl font-black order-1 md:order-2 my-4 md:my-0 shadow-lg shadow-sky-400/30">
+                            4
+                        </div>
+                        <div class="w-full md:w-[45%] order-2 md:order-3 text-center md:text-left bg-white dark:bg-slate-900 p-6 rounded-3xl border-4 border-sky-300 shadow-md">
+                            <h4 class="text-lg font-black text-sky-500 mb-2">🎨 ด่านที่ 4: ทำของเล่น/ขนมต้นแบบลองชิม!</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                อย่าเพิ่งทำเยอะนะ! ทำสูตรแรกสุดหรือตัวอย่างของเล่นขึ้นมา 1 ชิ้น (MVP) แล้วให้เพื่อนสนิทหรือผู้ปกครองลองชิมเพื่อฟังคำแนะนำก่อนปรับปรุง
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="w-full md:w-[45%] order-2 md:order-1 text-center md:text-right bg-white dark:bg-slate-900 p-6 rounded-3xl border-4 border-purple-200 shadow-md">
+                            <h4 class="text-lg font-black text-purple-500 mb-2">🎉 ด่านที่ 5: เปิดร้านพร้อมสะสมความสำเร็จ!</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                ได้เวลาเปิดร้านค้าจริง ตกแต่งด้วยป้ายน่ารักๆ ตะโกนเรียกลูกค้า และอย่าลืมยิ้มแย้มแจ่มใสเมื่อส่งมอบความสนุกให้กับทุกคนนะฮะ!
+                            </p>
+                        </div>
+                        <div class="z-10 flex items-center justify-center w-14 h-14 rounded-2xl bg-purple-600 text-white text-xl font-black order-1 md:order-2 my-4 md:my-0 shadow-lg shadow-purple-500/30">
+                            5
+                        </div>
+                        <div class="hidden md:block w-[45%] order-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: BUSINESS CANVAS (แผนธุรกิจย่อส่วน - Interactive Accordion) -->
+        <section id="business-canvas" class="py-20 bg-white dark:bg-slate-900 border-b-4 border-dashed border-purple-200 dark:border-slate-800 theme-transition">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Informative side -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <span class="text-6xl animate-bounce inline-block">🗺️🎒</span>
+                        <h2 class="text-3xl font-black text-slate-900 dark:text-white leading-tight">
+                            ลายแทงโจรสลัดร้านค้าของหนู (Kidpreneur Canvas)
+                        </h2>
+                        <p class="text-slate-600 dark:text-slate-300">
+                            นี่คือแผนที่แผ่นเดียวที่ระบุความลับในการหารายได้ของหนู! มาศึกษาโครงสร้าง 4 ฝ่ายกันดีกว่าว่ามีอะไรให้พวกเราสำรวจบ้าง
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-300 font-bold">
+                            💡 แตะที่หีบสมบัติแต่ละเบอร์เพื่อเปิดดูลายแทงลับ!
+                        </p>
+                        <div class="p-5 bg-purple-50 dark:bg-purple-950/40 border-l-4 border-purple-500 rounded-2xl text-sm text-purple-900 dark:text-purple-300 font-medium">
+                            "ถ้าหนูระบุช่องทางเหล่านี้ได้ชัดเจน รับรองโจรสลัดคู่แข่งก็แย่งฐานลูกค้าหนูไปไม่ได้แน่นอน!"
+                        </div>
+                    </div>
+
+                    <!-- Interactive Accordion Side -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <!-- Accordion Item 1 -->
+                        <div class="border-4 border-pink-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm transition hover:shadow-md">
+                            <button onclick="toggleAccordion('acc-1')" class="w-full flex items-center justify-between p-5 bg-pink-50/50 dark:bg-slate-800/50 hover:bg-pink-100/60 dark:hover:bg-slate-800 transition-colors text-left">
+                                <span class="font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-3">
+                                    <span class="w-10 h-10 rounded-xl bg-pink-500 text-white flex items-center justify-center text-sm font-black shadow-md">1</span>
+                                    ผู้พิทักษ์หลังบ้าน (เพื่อนและคุณพ่อคุณแม่)
+                                </span>
+                                <i id="icon-acc-1" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+                            </button>
+                            <div id="content-acc-1" class="hidden p-5 border-t-4 border-pink-100 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm text-slate-600 dark:text-slate-300 space-y-3">
+                                <p><strong>🤝 หุ้นส่วนคนสำคัญ:</strong> ใครที่จะช่วยเป็นสปอนเซอร์ หรือช่วยล้างถ้วยชามและขับรถไปส่งวัตถุดิบให้เรา (เช่น คุณพ่อ คุณแม่ เพื่อนสนิท)</p>
+                                <p><strong>🏃‍♂️ กิจกรรมหลัก:</strong> งานที่พวกเราต้องทำทุกวันเพื่อเสิร์ฟความอร่อย/ความสนุก (เช่น การทำขนม, การปั้นแต่งดินน้ำมัน, การวาดรูปป้ายตกแต่งร้าน)</p>
+                                <p><strong>💎 อุปกรณ์วิเศษ:</strong> สิ่งจำเป็นที่จะต้องมี (เช่น แม่พิมพ์ซิลิโคน, ไมโครเวฟ, กระปุกหมูเก็บเงินออม)</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="border-4 border-yellow-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm transition hover:shadow-md">
+                            <button onclick="toggleAccordion('acc-2')" class="w-full flex items-center justify-between p-5 bg-yellow-50/50 dark:bg-slate-800/50 hover:bg-yellow-100/60 dark:hover:bg-slate-800 transition-colors text-left">
+                                <span class="font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-3">
+                                    <span class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-900 flex items-center justify-center text-sm font-black shadow-md">2</span>
+                                    ของวิเศษของร้านเรา (Value Proposition)
+                                </span>
+                                <i id="icon-acc-2" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+                            </button>
+                            <div id="content-acc-2" class="hidden p-5 border-t-4 border-yellow-100 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                                <p><strong>👑 คุณสมบัติพิเศษของร้านเรา:</strong> อะไรคือสิ่งที่ทำให้ร้านเราแตกต่างไม่เหมือนใคร เช่น คุกกี้ที่แถมสติกเกอร์การ์ตูนฝีมือเรา, สไลม์ที่มีกลิ่นหอมช็อกโกแลตสุดวิเศษ!</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="border-4 border-emerald-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm transition hover:shadow-md">
+                            <button onclick="toggleAccordion('acc-3')" class="w-full flex items-center justify-between p-5 bg-emerald-50/50 dark:bg-slate-800/50 hover:bg-emerald-100/60 dark:hover:bg-slate-800 transition-colors text-left">
+                                <span class="font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-3">
+                                    <span class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-sm font-black shadow-md">3</span>
+                                    เพื่อนๆ ลูกค้า และช่องทางสื่อสาร
+                                </span>
+                                <i id="icon-acc-3" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+                            </button>
+                            <div id="content-acc-3" class="hidden p-5 border-t-4 border-emerald-100 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm text-slate-600 dark:text-slate-300 space-y-3">
+                                <p><strong>💖 การเอาใจใส่ลูกค้า:</strong> วิธีคุยให้ทุกคนประทับใจ (เช่น การแถมรอยยิ้มหวานๆ, มีกล่องของเล่นพิเศษให้เปิดจับฉลากของขวัญ)</p>
+                                <p><strong>📣 ช่องทางการจำหน่าย:</strong> หน้าร้านจริงของเราอยู่แถวไหน (เช่น ซุ้มขายของเล่นหน้าหมู่บ้าน, บนม้านั่งใต้ต้นไม้ที่โรงเรียน, เว็บไซต์ของคุณแม่)</p>
+                                <p><strong>🦖 แก๊งเป้าหมาย:</strong> ลูกค้าส่วนใหญ่คือใคร (เช่น แก๊งเพื่อนสนิทประถม, เพื่อนบ้าน, น้องๆ วัยอนุบาลแสนซน)</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="border-4 border-sky-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm transition hover:shadow-md">
+                            <button onclick="toggleAccordion('acc-4')" class="w-full flex items-center justify-between p-5 bg-sky-50/50 dark:bg-slate-800/50 hover:bg-sky-100/60 dark:hover:bg-slate-800 transition-colors text-left">
+                                <span class="font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-3">
+                                    <span class="w-10 h-10 rounded-xl bg-sky-400 text-white flex items-center justify-center text-sm font-black shadow-md">4</span>
+                                    กระเป๋าตังค์ใบโต (ค่าน้ำตาลงบและกำไรทอง)
+                                </span>
+                                <i id="icon-acc-4" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
+                            </button>
+                            <div id="content-acc-4" class="hidden p-5 border-t-4 border-sky-100 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm text-slate-600 dark:text-slate-300 space-y-3">
+                                <p><strong>💸 ต้นทุนค่าวัสดุ:</strong> รายจ่ายทั้งหมดที่เราจ่ายจริง (เช่น ค่ากระดาษสี, ค่าน้ำผึ้งป่า, แป้งคุกกี้สวรรค์)</p>
+                                <p><strong>💰 รายรับแสนสุข:</strong> เงินทองที่ไหลมาเทมาจากการขายสินค้าและบริการให้เพื่อนๆ นอกเวลาเรียน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ✨ คลินิกที่ปรึกษา AI (AI Entrepreneur Clinic for Kids) -->
+        <section id="ai-clinic" class="py-20 bg-gradient-to-b from-purple-50/50 to-pink-50/50 dark:from-slate-950 dark:to-slate-900 border-t-4 border-b-4 border-dashed border-pink-200 dark:border-slate-800 theme-transition">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header of Section -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                    <span class="inline-block px-4 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-black uppercase tracking-wider">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> ขับเคลื่อนด้วยโมเดลแสนฉลาด Gemini 2.5 Flash
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                        ✨ คลินิกสัตว์เลี้ยงที่ปรึกษา AI รุ่นจิ๋ว!
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300">
+                        ลองกรอกไอเดียร้านค้าของหนู (เช่น "ร้านขายคุกกี้สายรุ้ง" หรือ "แอปแชร์ของเล่น") แล้วส่งมาให้พี่หมี พี่ลิง หรือพี่เต่า ช่วยออกความเห็นแสนสนุกกันเถอะ!
+                    </p>
+                </div>
+
+                <!-- Active Grid for AI Tools -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                    
+                    <!-- Tool 1: AI Idea Analyzer Card -->
+                    <div class="bg-white dark:bg-slate-900 rounded-[36px] p-6 md:p-8 border-4 border-purple-200 dark:border-slate-800 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center shadow-inner">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-black text-slate-950 dark:text-white">✨ วิเคราะห์ไอเดียร้านค้ารุ่นจิ๋ว</h3>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+                                พิมพ์ไอเดียร้านค้าสุดฝันของหนูลงในกล่องด้านล่างนี้เลยฮะ AI จะสวมบทบาทนักแต่งนิทานวิเคราะห์โอกาสและตั้งชื่อแบรนด์สุดคิ้วท์ให้ทันที!
+                            </p>
+                            
+                            <textarea id="ai-idea-input" rows="4" class="w-full p-4 border-3 border-purple-100 focus:border-purple-300 dark:border-slate-800 rounded-2xl bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm text-slate-800 dark:text-slate-200" placeholder="ตัวอย่าง: ร้านคุกกี้โฮมเมดแสนอร่อยของหนูที่แถมสติกเกอร์วาดเองในทุกถุง..."></textarea>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <button id="btn-analyze-idea" class="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-black rounded-2xl transition transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/25">
+                                <i class="fa-solid fa-sparkles"></i> ✨ ขอพลังปาฏิหาริย์วิเคราะห์ไอเดีย!
+                            </button>
+                        </div>
+
+                        <!-- Result Box Analyzer -->
+                        <div id="idea-analyzer-result-box" class="hidden mt-6 p-4 rounded-2xl border-2 border-purple-100 dark:border-purple-950 bg-purple-50/40 dark:bg-purple-950/20 max-h-80 overflow-y-auto text-sm text-slate-700 dark:text-slate-300">
+                            <div class="flex items-center gap-2 mb-2 font-black text-purple-600 dark:text-purple-400">
+                                <i class="fa-solid fa-star animate-pulse"></i> คำแนะนำและนิทานไอเดียสุดวิเศษจาก AI:
+                            </div>
+                            <div id="idea-analyzer-result-content" class="whitespace-pre-line leading-relaxed"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 2: AI Mentor Simulator Card -->
+                    <div class="bg-white dark:bg-slate-900 rounded-[36px] p-6 md:p-8 border-4 border-pink-200 dark:border-slate-800 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 rounded-2xl bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400 flex items-center justify-center shadow-inner">
+                                    <i class="fa-solid fa-comments text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-black text-slate-950 dark:text-white">✨ ห้องแชทคู่หูสัตว์เลี้ยงแสนรัก</h3>
+                            </div>
+                            
+                            <!-- Mentor Selectors for Kids -->
+                            <div class="grid grid-cols-3 gap-2 mb-4">
+                                <button onclick="selectMentor('investor')" id="m-investor" class="mentor-tab p-2 text-xs border-2 rounded-xl text-center font-extrabold transition bg-purple-50 dark:bg-purple-950 border-purple-500 text-purple-600 dark:text-purple-400">
+                                    🧸 พี่หมีพูห์ผู้ตรวจบัญชี
+                                </button>
+                                <button onclick="selectMentor('marketer')" id="m-marketer" class="mentor-tab p-2 text-xs border-2 rounded-xl text-center font-extrabold transition border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50">
+                                    🐒 ลิงเจี๊ยกนักขายสุดป่วน
+                                </button>
+                                <button onclick="selectMentor('serial')" id="m-serial" class="mentor-tab p-2 text-xs border-2 rounded-xl text-center font-extrabold transition border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50">
+                                    🐢 คุณเต่าใจดีช้าแต่ชัวร์
+                                </button>
+                            </div>
+
+                            <!-- Chat Area -->
+                            <div id="mentor-chat-box" class="h-48 overflow-y-auto border border-slate-100 dark:border-slate-800 rounded-2xl p-4 bg-slate-50 dark:bg-slate-950 text-xs space-y-3 mb-4">
+                                <div class="chat-msg system bg-purple-100/60 dark:bg-purple-950/30 p-2.5 rounded-xl text-slate-700 dark:text-slate-300">
+                                    <strong>ผู้ช่วยสุดคิวท์:</strong> สวัสดีฮะคุณหนูๆ! เลือกคู่หูสัตว์เลี้ยงแสนรักข้างบน แล้วถามปัญหาขายของหรือชวนคุยเล่นไอเดียได้เลยนะโฮ่ง!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex gap-2">
+                                <input type="text" id="mentor-chat-input" class="flex-1 p-3.5 border-2 border-pink-100 dark:border-slate-800 rounded-2xl bg-slate-50 dark:bg-slate-950 text-xs focus:ring-2 focus:ring-pink-400 focus:border-pink-300 outline-none text-slate-800 dark:text-slate-200" placeholder="ถามเพื่อนรักสัตว์เลี้ยง เช่น 'คุกกี้ที่หนูทำจืดไปจะแก้ยังไงคะ?'">
+                                <button id="btn-send-chat" class="px-5 bg-gradient-to-r from-pink-500 to-fuchsia-500 hover:from-pink-600 hover:to-fuchsia-600 text-white rounded-2xl text-xs font-black flex items-center gap-1 shadow-md">
+                                    ส่ง 🚀
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: INTERACTIVE QUIZ (แบบทดสอบความเป็นผู้ประกอบการสำหรับเด็ก) -->
+        <section id="quiz" class="py-20 bg-yellow-50/20 dark:bg-slate-950 border-t border-b border-slate-100 dark:border-slate-800 theme-transition">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 space-y-3">
+                    <span class="text-6xl animate-bounce inline-block">🏆🍪</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                        มาประเมินความเป็น 'เถ้าแก่น้อยรุ่นจิ๋ว' กันดีกว่า!
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300">
+                        ลองทำเกมทายทัศนคติ 5 ข้อง่ายๆ แล้วดูซิว่าหนูได้คะแนนหมัดเด็ดระดับไหนกันฮะ
+                    </p>
+                </div>
+
+                <!-- Quiz Card Container -->
+                <div id="quiz-container" class="bg-white dark:bg-slate-900 rounded-[40px] p-8 md:p-12 shadow-2xl border-4 border-yellow-300 dark:border-slate-800 relative theme-transition">
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full mb-8 overflow-hidden border">
+                        <div id="quiz-progress" class="bg-gradient-to-r from-pink-500 to-yellow-400 h-3 w-[20%] transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Step-by-Step Question Views -->
+                    <!-- Question 1 -->
+                    <div id="q1" class="quiz-question-view">
+                        <span class="text-fuchsia-500 dark:text-fuchsia-400 font-black text-sm">🍭 ด่านดวงดาวที่ 1 จาก 5</span>
+                        <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-2 mb-6">ถ้าวันนี้หนูพยายามทำคุกกี้ช็อกโกแลตไปฝากเพื่อน แต่ดันไหม้จนกินไม่ได้ หนูจะทำอย่างไรฮะ?</h3>
+                        <div class="space-y-4">
+                            <button onclick="chooseAnswer(1, 3)" class="w-full p-4 border-3 border-pink-100 hover:border-pink-500 dark:border-slate-800 rounded-2xl text-left hover:bg-pink-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ไม่ร้องไห้! ลองหาสาเหตุว่าทำไมไหม้ แล้วทำใหม่ให้เจ๋งกว่าเดิม 🍪</span>
+                                <i class="fa-solid fa-star text-yellow-400"></i>
+                            </button>
+                            <button onclick="chooseAnswer(1, 1)" class="w-full p-4 border-3 border-pink-100 hover:border-pink-500 dark:border-slate-800 rounded-2xl text-left hover:bg-pink-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ท้อใจสุดๆ และคิดว่าเราไม่มีทางทำขนมได้หรอก ไปเล่นแทนดีกว่า 🧸</span>
+                                <i class="fa-solid fa-star text-slate-300"></i>
+                            </button>
+                            <button onclick="chooseAnswer(1, 2)" class="w-full p-4 border-3 border-pink-100 hover:border-pink-500 dark:border-slate-800 rounded-2xl text-left hover:bg-pink-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>อ้อนให้คุณแม่ช่วยอบขนมให้แทน แล้วบอกเพื่อนว่าหนูทำเองฮะ 👩‍🍳</span>
+                                <i class="fa-solid fa-star text-amber-300"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div id="q2" class="quiz-question-view hidden">
+                        <span class="text-fuchsia-500 dark:text-fuchsia-400 font-black text-sm">🍭 ด่านดวงดาวที่ 2 จาก 5</span>
+                        <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-2 mb-6">หนูอยากจะประดิษฐ์สไลม์ไปแจกเพื่อนๆ ในห้อง แต่กลัวว่าเพื่อนจะไม่ชอบสีที่เลือก หนูจะใช้วิธีไหนดี?</h3>
+                        <div class="space-y-4">
+                            <button onclick="chooseAnswer(2, 1)" class="w-full p-4 border-3 border-yellow-100 hover:border-yellow-400 dark:border-slate-800 rounded-2xl text-left hover:bg-yellow-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ทำตามใจตัวเองคนเดียวเลย เพราะเราชอบสีชมพูวิบวับที่สุด! 💖</span>
+                                <i class="fa-solid fa-paint-brush text-slate-300"></i>
+                            </button>
+                            <button onclick="chooseAnswer(2, 3)" class="w-full p-4 border-3 border-yellow-100 hover:border-yellow-400 dark:border-slate-800 rounded-2xl text-left hover:bg-yellow-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>เดินไปถามเพื่อนๆ หลายคนตอนพักกลางวันว่าชอบสีอะไรกันบ้าง 🎨</span>
+                                <i class="fa-solid fa-paint-brush text-yellow-400"></i>
+                            </button>
+                            <button onclick="chooseAnswer(2, 2)" class="w-full p-4 border-3 border-yellow-100 hover:border-yellow-400 dark:border-slate-800 rounded-2xl text-left hover:bg-yellow-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ทำคละกันไปมั่วๆ โดยไม่สนใจข้อมูลใดๆ เลย ดวงใครดวงมันฮะ 🍭</span>
+                                <i class="fa-solid fa-paint-brush text-amber-300"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div id="q3" class="quiz-question-view hidden">
+                        <span class="text-fuchsia-500 dark:text-fuchsia-400 font-black text-sm">🍭 ด่านดวงดาวที่ 3 จาก 5</span>
+                        <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-2 mb-6">เหรียญทองเก็บสะสมในกระปุกหมูมีจำกัด แต่มีของเล่นชิ้นโปรดที่หนูอยากได้เพื่อมาแต่งแบรนด์ หนูจะจัดการยังไง?</h3>
+                        <div class="space-y-4">
+                            <button onclick="chooseAnswer(3, 1)" class="w-full p-4 border-3 border-emerald-100 hover:border-emerald-500 dark:border-slate-800 rounded-2xl text-left hover:bg-emerald-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ทุบกระปุกเอาเหรียญเก็บออกมาซื้อทั้งหมดเลย โดยไม่คิดว่าจะหาเพิ่มได้ยังไง 💸</span>
+                                <i class="fa-solid fa-piggy-bank text-slate-300"></i>
+                            </button>
+                            <button onclick="chooseAnswer(3, 3)" class="w-full p-4 border-3 border-emerald-100 hover:border-emerald-500 dark:border-slate-800 rounded-2xl text-left hover:bg-emerald-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>แบ่งเหรียญออมอัศวินเป็นสัดส่วน และวางแผนเก็บเงินต่อยอดจากกำไรทำคุกกี้ 🐷</span>
+                                <i class="fa-solid fa-piggy-bank text-yellow-400"></i>
+                            </button>
+                            <button onclick="chooseAnswer(3, 2)" class="w-full p-4 border-3 border-emerald-100 hover:border-emerald-500 dark:border-slate-800 rounded-2xl text-left hover:bg-emerald-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>วิ่งไปร้องไห้กวนคอให้คุณพ่อคุณแม่ควักเงินส่วนตัวซื้อให้ทันทีฮะ 🧑‍🍼</span>
+                                <i class="fa-solid fa-piggy-bank text-amber-300"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div id="q4" class="quiz-question-view hidden">
+                        <span class="text-fuchsia-500 dark:text-fuchsia-400 font-black text-sm">🍭 ด่านดวงดาวที่ 4 จาก 5</span>
+                        <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-2 mb-6">มีเพื่อนเดินมาบอกว่าสไลม์ที่หนูแจก มันหนืดเกินไปและไม่ชอบสัมผัสนี้เลย หนูจะทำยังไง?</h3>
+                        <div class="space-y-4">
+                            <button onclick="chooseAnswer(4, 3)" class="w-full p-4 border-3 border-sky-100 hover:border-sky-500 dark:border-slate-800 rounded-2xl text-left hover:bg-sky-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ขอบคุณเพื่อน แล้วจดจำไปทดลองสูตรนุ่มเด้งในครั้งหน้าแทน 🍬</span>
+                                <i class="fa-solid fa-face-smile text-yellow-400"></i>
+                            </button>
+                            <button onclick="chooseAnswer(4, 2)" class="w-full p-4 border-3 border-sky-100 hover:border-sky-500 dark:border-slate-800 rounded-2xl text-left hover:bg-sky-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>โต้เถียงกลับไปว่า 'นี่เป็นสูตรที่อร่อยหอมและเด้งที่สุดแล้วนะ!' แต่ในใจแอบงอนเพื่อน 😤</span>
+                                <i class="fa-solid fa-face-smile text-amber-300"></i>
+                            </button>
+                            <button onclick="chooseAnswer(4, 1)" class="w-full p-4 border-3 border-sky-100 hover:border-sky-500 dark:border-slate-800 rounded-2xl text-left hover:bg-sky-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>เสียใจและเลิกคิดทำสไลม์ไปตลอดกาล เพราะคิดว่าไม่มีใครเข้าใจผลงาน 🥺</span>
+                                <i class="fa-solid fa-face-smile text-slate-300"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div id="q5" class="quiz-question-view hidden">
+                        <span class="text-fuchsia-500 dark:text-fuchsia-400 font-black text-sm">🍭 ด่านดวงดาวที่ 5 จาก 5</span>
+                        <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-2 mb-6">เวลาต้องทำงานประดิษฐ์กลุ่มกับเพื่อนๆ ที่โรงเรียน หนูชอบทำหน้าที่แนวไหนที่สุด?</h3>
+                        <div class="space-y-4">
+                            <button onclick="chooseAnswer(5, 3)" class="w-full p-4 border-3 border-purple-100 hover:border-purple-500 dark:border-slate-800 rounded-2xl text-left hover:bg-purple-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ช่วยเพื่อนๆ วางแผน แบ่งงานกันทำ และพร้อมไปขอความเห็นคุณครูร่วมกัน 🤝</span>
+                                <i class="fa-solid fa-people-group text-yellow-400"></i>
+                            </button>
+                            <button onclick="chooseAnswer(5, 2)" class="w-full p-4 border-3 border-purple-100 hover:border-purple-500 dark:border-slate-800 rounded-2xl text-left hover:bg-purple-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>คอยช่วยงานเล็กๆ น้อยๆ ตามที่เพื่อนหัวหน้ากลุ่มสั่งอย่างเดียว ไม่ขอเสนอความคิด 🏃‍♂️</span>
+                                <i class="fa-solid fa-people-group text-amber-300"></i>
+                            </button>
+                            <button onclick="chooseAnswer(5, 1)" class="w-full p-4 border-3 border-purple-100 hover:border-purple-500 dark:border-slate-800 rounded-2xl text-left hover:bg-purple-50/50 dark:hover:bg-purple-950/20 transition-all font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                                <span>ทำชิ้นงานคนเดียวเลยดีกว่า ไม่อยากแบ่งงานใคร เพราะกลัวพัง 🙅‍♂️</span>
+                                <i class="fa-solid fa-people-group text-slate-300"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div id="quiz-result" class="hidden text-center space-y-6">
+                        <div class="inline-flex items-center justify-center w-28 h-28 bg-gradient-to-tr from-yellow-300 via-pink-500 to-purple-600 text-white rounded-full text-5xl mb-2 shadow-lg animate-bounce">
+                            <i id="result-icon" class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">ผลประเมินเหรียญรางวัลเถ้าแก่น้อย!</h3>
+                        <p class="text-4xl font-black text-fuchsia-600 dark:text-fuchsia-400" id="result-score">คะแนน: -- / 15</p>
+                        
+                        <div class="p-6 bg-pink-50/60 dark:bg-slate-800 border-4 border-pink-100 dark:border-slate-700 rounded-3xl max-w-lg mx-auto">
+                            <p class="font-black text-slate-800 dark:text-white text-lg mb-2" id="result-title">เถ้าแก่น้อยไอเดียระเบิดระเบ้อ!</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-semibold" id="result-desc">
+                                ยินดีด้วยฮะ! หนูมีความตั้งใจยอดเยี่ยมพร้อมเรียนรู้สิ่งรอบตัว แนะนำให้ลองวางแผนจับคู่ทำขนมกับเพื่อนดูสักครั้งเลยฮะ!
+                            </p>
+                        </div>
+
+                        <div class="pt-6 font-black">
+                            <button onclick="resetQuiz()" class="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-2xl transition transform hover:scale-105 active:scale-95 shadow-lg">
+                                <i class="fa-solid fa-rotate-left mr-2"></i> เล่นเกมอีกรอบ 🍭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (ข้อมูลผู้พัฒนา) -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t-8 border-yellow-300 dark:border-purple-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Branding in Footer -->
+                <div>
+                    <div class="flex items-center space-x-2 text-white mb-4">
+                        <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-2 rounded-xl">
+                            <i class="fa-solid fa-gamepad text-lg"></i>
+                        </div>
+                        <span class="font-extrabold text-xl tracking-tight">Kid<span class="text-fuchsia-400">preneur!</span></span>
+                    </div>
+                    <p class="text-sm max-w-sm">
+                        แพลตฟอร์มการเรียนรู้และคู่มือสนุกเกอร์สำหรับผู้ประกอบการตัวน้อยและนักสร้างนวัตกรรมวัยเยาว์สู่อนาคตที่สดใส
+                    </p>
+                </div>
+                
+                <!-- Developer Info Contact -->
+                <div class="flex flex-col md:items-end justify-center space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-slate-500 font-bold">ทีมพี่เลี้ยงผู้ออกแบบเว็บไซต์</span>
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 w-full md:w-auto md:min-w-[360px] flex items-center gap-4">
+                        <img src="https://lh3.googleusercontent.com/d/1mf54GTJm7QxLquXhAsPdL0PdaFjqP5_7" 
+                             onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1mf54GTJm7QxLquXhAsPdL0PdaFjqP5_7';" 
+                             alt="ณัฏฐณิชา รายากุล" 
+                             class="w-16 h-16 rounded-full border-4 border-fuchsia-400 object-cover shadow-lg bg-slate-700 flex-shrink-0">
+                        <div>
+                            <p class="text-white font-black text-base">ณัฏฐณิชา รายากุล</p>
+                            <p class="text-slate-400 text-xs mt-1 font-semibold">ผู้พัฒนาเทคโนโลยีจำลองและออกแบบ UI/UX สีสันสดใส</p>
+                            <div class="flex items-center space-x-3 mt-3 text-xs text-fuchsia-400 font-bold">
+                                <a href="#" class="hover:text-fuchsia-300 transition-colors"><i class="fa-solid fa-envelope mr-1"></i> ส่งจดหมายทักทายคุณครู</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Kidpreneur. แหล่งก้าวสู่ความก้าวหน้าจิ๋วอันสดใส.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 font-semibold">
+                    <a href="#" class="hover:text-slate-300">นโยบายแสนอุ่นใจ</a>
+                    <a href="#" class="hover:text-slate-300">กฎระเบียบเถ้าแก่น้อย</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // --- 1. LIGHT/DARK THEME TOGGLE ENGINE ---
+        const htmlElement = document.documentElement;
+        
+        // ฟังก์ชันสลับโหมด
+        function toggleTheme() {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                updateThemeIcons(false);
+            } else {
+                htmlElement.classList.add('dark');
+                updateThemeIcons(true);
+            }
+        }
+
+        // อัปเดตสัญลักษณ์ดวงอาทิตย์/ดวงจันทร์
+        function updateThemeIcons(isDark) {
+            const iconDesktop = document.getElementById('theme-icon-desktop');
+            const iconMobileBar = document.getElementById('theme-icon-mobile-bar');
+            
+            if (isDark) {
+                iconDesktop.className = 'fa-solid fa-star-and-crescent text-xl text-yellow-300 animate-pulse';
+                iconMobileBar.className = 'fa-solid fa-star-and-crescent text-xl text-yellow-300 animate-pulse';
+            } else {
+                iconDesktop.className = 'fa-solid fa-sun text-xl text-amber-500 animate-spin-slow';
+                iconMobileBar.className = 'fa-solid fa-sun text-xl text-amber-500 animate-spin-slow';
+            }
+        }
+
+        // เชื่อมโยง Event Listeners ของปุ่ม
+        document.getElementById('theme-toggle-desktop').addEventListener('click', toggleTheme);
+        document.getElementById('theme-toggle-mobile-bar').addEventListener('click', toggleTheme);
+
+
+        // --- 2. RESPONSIVE MOBILE MENU NAVIGATION ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.className = 'fa-solid fa-xmark text-2xl text-pink-500'; // Close icon
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl'; // Hamburger icon
+            }
+        });
+
+        // Close mobile menu on clicking any navigation link
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            });
+        });
+
+
+        // --- 3. INTERACTIVE ACCORDION (KID BUSINESS CANVAS) ---
+        function toggleAccordion(id) {
+            const content = document.getElementById('content-' + id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // Toggle Content Visibility
+            if (content.classList.contains('hidden')) {
+                // First close all other accordions
+                document.querySelectorAll('[id^="content-acc-"]').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('[id^="icon-acc-"]').forEach(el => {
+                    el.classList.remove('rotate-180');
+                    el.classList.add('text-slate-400');
+                });
+                
+                // Open Current Accordion
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180', 'text-fuchsia-500', 'dark:text-fuchsia-400');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180', 'text-fuchsia-500', 'dark:text-fuchsia-400');
+                icon.classList.add('text-slate-400');
+            }
+        }
+
+
+        // --- 4. QUIZ LOGIC AND SCORING SYSTEM ---
+        let currentStep = 1;
+        let score = 0;
+
+        function chooseAnswer(questionNum, points) {
+            score += points;
+            
+            // Hide current view
+            document.getElementById('q' + questionNum).classList.add('hidden');
+            
+            // Move to next question or show result
+            if (questionNum < 5) {
+                currentStep = questionNum + 1;
+                document.getElementById('q' + currentStep).classList.remove('hidden');
+                
+                // Progress Bar Update
+                const progressPercentage = (currentStep / 5) * 100;
+                document.getElementById('quiz-progress').style.width = progressPercentage + '%';
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            // Hide progress bar wrapper
+            document.getElementById('quiz-progress').parentElement.classList.add('hidden');
+            
+            // Set Result Info
+            const scoreDisplay = document.getElementById('result-score');
+            const resTitle = document.getElementById('result-title');
+            const resDesc = document.getElementById('result-desc');
+            const resIcon = document.getElementById('result-icon');
+            
+            scoreDisplay.innerText = "หนูได้รับคะแนนรวม: " + score + " / 15 เหรียญทอง!";
+            
+            if (score >= 12) {
+                resTitle.innerText = "🌈 ยอดเถ้าแก่น้อยอัจฉริยะ (The Visionary Leader)";
+                resDesc.innerText = "ว้าว! หนูมีความเป็นผู้นำสูงมาก กล้าหาญ ไม่กลัวอุปสรรค และรักความท้าทาย สนุกกับแผนการเรียนรู้และพร้อมทำคุกกี้หรือของประดิษฐ์ไปสร้างรอยยิ้มให้กับเพื่อนๆ ในห้องแล้วฮะ!";
+                resIcon.className = "fa-solid fa-cloud-sun text-yellow-400";
+            } else if (score >= 8) {
+                resTitle.innerText = "🎨 นักออกแบบร้านสมองใส (Creative Planner)";
+                resDesc.innerText = "หนูมีความรอบคอบและใจกว้างมากฮะ! ชอบเรียนรู้และฟังคนรอบข้าง ลองมองหาคู่หูมาช่วยรังสรรค์ไอเดีย จะช่วยส่งเสริมให้แผนความฝันของหนูกลายเป็นร้านจริงได้เร็วขึ้น!";
+                resIcon.className = "fa-solid fa-palette text-pink-400";
+            } else {
+                resTitle.innerText = "🍭 อัศวินน้อยผู้รักษาความสุข (Careful Explorer)";
+                resDesc.innerText = "หนูรักความปลอดภัยและความมั่นใจสูงมาก ซึ่งเป็นเรื่องที่ดีสุดๆ สำหรับนักธุรกิจที่ไม่ประมาท! ลองก้าวเดินช้าๆ ค่อยๆ ปรึกษาคุณพ่อคุณแม่และคู่หูสัตว์เลี้ยง AI ของเราเพื่อสร้างพลังความมั่นใจกันนะฮะ!";
+                resIcon.className = "fa-solid fa-shield-heart text-sky-400";
+            }
+            
+            // Show result section
+            document.getElementById('quiz-result').classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            // Reset variables
+            currentStep = 1;
+            score = 0;
+            
+            // Reset Progress Bar
+            document.getElementById('quiz-progress').style.width = '20%';
+            document.getElementById('quiz-progress').parentElement.classList.remove('hidden');
+            
+            // Hide result section
+            document.getElementById('quiz-result').classList.add('hidden');
+            
+            // Show only first question
+            for (let i = 2; i <= 5; i++) {
+                document.getElementById('q' + i).classList.add('hidden');
+            }
+            document.getElementById('q1').classList.remove('hidden');
+        }
+
+
+        // Active state in desktop menu bar based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let current = 'hero';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+
+
+        // =========================================================
+        // --- 5. GEMINI API LLM-POWERED INTEGRATION SERVICE ---
+        // =========================================================
+        
+        // ฟังก์ชันเรียกใช้ Gemini API พร้อมการทำ Exponential Backoff
+        async function callGemini(promptText, systemInstruction = "") {
+            const apiKey = ""; // ปล่อยเป็นค่าว่างเพื่อให้ระบบ runtime ฉีดคีย์เข้ามาทำงานอัตโนมัติ
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }]
+            };
+            
+            if (systemInstruction) {
+                payload.systemInstruction = {
+                    parts: [{ text: systemInstruction }]
+                };
+            }
+
+            let delay = 1000;
+            for (let i = 0; i < 5; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        return data.candidates?.[0]?.content?.parts?.[0]?.text || "ขออภัย ไม่พบคำตอบจาก AI";
+                    }
+                } catch (err) {
+                    // ไม่ล็อกขัดข้องเพื่อให้เงียบตามเงื่อนไข แต่จะดีเลย์และ retry อีกรอบ
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+            }
+            throw new Error("ระบบเชื่อมต่อ AI ขัดข้องในป่าลึกลับ ลองขอใหม่อีกครั้งนะเจ้าเถ้าแก่น้อย!");
+        }
+
+        // --- ฟีเจอร์ที่ 1: วิเคราะห์ไอเดียธุรกิจฉบับเด็ก ---
+        const btnAnalyzeIdea = document.getElementById('btn-analyze-idea');
+        const ideaInput = document.getElementById('ai-idea-input');
+        const ideaResultBox = document.getElementById('idea-analyzer-result-box');
+        const ideaResultContent = document.getElementById('idea-analyzer-result-content');
+
+        btnAnalyzeIdea.addEventListener('click', async () => {
+            const ideaText = ideaInput.value.trim();
+            if (!ideaText) {
+                alertUser("กรุณากรอกไอเดียร้านค้าจิ๋วสุดสร้างสรรค์ก่อนฮะเพื่อนรัก!");
+                return;
+            }
+
+            // แสดงสถานะการโหลด
+            btnAnalyzeIdea.disabled = true;
+            btnAnalyzeIdea.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> กำลังเป่าเวทมนตร์ค้นหาความลับคำตอบ...';
+            ideaResultBox.classList.remove('hidden');
+            ideaResultContent.innerHTML = "สแกนแผนที่ลายแทงไอเดียคุณหนูๆ ลงในกระดานวิเศษเรียลไทม์ โปรดรอสักครู่เจ้าคะ...";
+
+            const systemPrompt = "คุณคือ 'นางฟ้าผู้พิทักษ์ธุรกิจจิ๋ว' ที่ชอบแต่งนิทาน มีหน้าที่แนะแนวเด็กๆ และเยาวชนอายุ 7-12 ปี โดยวิเคราะห์ความฝันร้านค้าของเด็กๆ ในหัวข้อ: 1) แนะนำชื่อแบรนด์สุดคิ้วท์ 2) การแปลงค่าความสนุกเป็นรางวัลเหรียญทอง 3) เคล็ดลับดึงดูดใจเพื่อนร่วมห้อง และ 4) อุปสรรคน่ารักๆ ที่เด็กๆ ต้องร่วมมือกันแก้ โปรดเขียนอธิบายด้วยภาษาไทยที่นุ่มนวล สนุกสนาน มีรอยยิ้ม และเข้าใจได้ง่ายๆ สำหรับเยาวชน";
+
+            try {
+                const analysisResult = await callGemini(ideaText, systemPrompt);
+                ideaResultContent.innerHTML = formatMarkdown(analysisResult);
+            } catch (error) {
+                ideaResultContent.innerHTML = `<span class="text-rose-500 font-extrabold"><i class="fa-solid fa-triangle-exclamation"></i> ขัดข้อง: ${error.message}</span>`;
+            } finally {
+                btnAnalyzeIdea.disabled = false;
+                btnAnalyzeIdea.innerHTML = '<i class="fa-solid fa-sparkles"></i> ✨ ขอพลังปาฏิหาริย์วิเคราะห์ไอเดีย!';
+            }
+        });
+
+        // --- ฟีเจอร์ที่ 2: จำลองการแชทกับคู่หูสัตว์เลี้ยงแสนดี ---
+        let currentMentor = 'investor';
+        const chatInput = document.getElementById('mentor-chat-input');
+        const btnSendChat = document.getElementById('btn-send-chat');
+        const chatBox = document.getElementById('mentor-chat-box');
+
+        const mentorProfiles = {
+            investor: {
+                name: "🧸 พี่หมีพูห์ผู้ตรวจบัญชี",
+                instruction: "คุณคือ 'พี่หมีพูห์' ที่ปรึกษาบัญชีรุ่นจิ๋ว ชอบถือกระปุกน้ำผึ้งและใส่แว่นสายตาหนาเตอะ คอยสอนน้องๆ เรื่องความประหยัด การนับเหรียญทอง และเตือนสติไม่ให้ใช้ค่าน้ำตาลเปลืองเกินไป คอยพูดจาอบอุ่น ลงท้ายด้วย 'โฮ่ง' หรือ 'ฮะพี่หมี'"
+            },
+            marketer: {
+                name: "🐒 ลิงเจี๊ยกนักขายสุดป่วน",
+                instruction: "คุณคือ 'ลิงเจี๊ยกจั๊ดจ๊าด' ยอดนักรีวิวของเล่นบนติ๊กต็อกและยูทูป มีไอเดียครีเอทีฟบ้าพลัง คอยแนะนำน้องๆ เรื่องจัดกิจกรรมจับฉลาก ตกแต่งซุ้มร้านด้วยลูกโป่งหลากสี และจัดของแถมสุดปังเพื่อดึงดูดใจเพื่อนๆ พูดตื่นเต้น มีพลังงานล้นเหลือ ลงท้ายด้วย 'เจี๊ยกๆ' เสมอ"
+            },
+            serial: {
+                name: "🐢 คุณเต่าใจดีช้าแต่ชัวร์",
+                instruction: "คุณคือ 'คุณเต่าใจดีไขกระดองอัศวิน' ผู้มีอายุ 100 ปีในการทำร้านขายหินมงคล คอยปลอบโยนเด็กๆ เวลาทำคุกกี้ตกพื้น ปลอบใจเวลาเพื่อนงอน ไม่เร่งรีบ เน้นสอนให้เด็กๆ ทำงานอย่างปลอดภัยและรักเพื่อนร่วมทีม คุยเสียงทุ้มๆ นุ่มนวล ลงท้ายด้วย 'นะจ๊ะลูกเต่า' เสมอ"
+            }
+        };
+
+        function selectMentor(type) {
+            currentMentor = type;
+            
+            // อัปเดตแท็บ UI
+            document.querySelectorAll('.mentor-tab').forEach(tab => {
+                tab.className = "mentor-tab p-2 text-xs border-2 rounded-xl text-center font-extrabold transition border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50";
+            });
+            
+            const activeTab = document.getElementById('m-' + type);
+            activeTab.className = "mentor-tab p-2 text-xs border-2 rounded-xl text-center font-extrabold transition bg-purple-50 dark:bg-purple-950 border-purple-500 text-purple-600 dark:text-purple-400";
+            
+            // ล้างหน้าจอแชทและทักทายใหม่ตามบทบาท
+            chatBox.innerHTML = `
+                <div class="chat-msg system bg-purple-100/60 dark:bg-purple-950/30 p-2.5 rounded-xl text-slate-700 dark:text-slate-300">
+                    <strong>${mentorProfiles[type].name}:</strong> ยินดีที่ได้จับมือร่วมทางกันฮะ! ฉันพร้อมตอบคำถามแสนสนุกตามมุมมองของฉันแล้ว ลองทักปัญหาของหนูมาได้เลยจ้า!
+                </div>
+            `;
+        }
+
+        btnSendChat.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendChatMessage();
+        });
+
+        async function sendChatMessage() {
+            const userText = chatInput.value.trim();
+            if (!userText) return;
+
+            // แสดงข้อความของผู้ใช้บนจอแชท
+            appendChatMessage("หนู", userText, "bg-slate-100 dark:bg-slate-800 self-end text-slate-800 dark:text-slate-200");
+            chatInput.value = "";
+
+            // แสดงสถานะการพิมพ์ของบอท
+            const loadingMsgId = "loading-" + Date.now();
+            appendChatMessage(mentorProfiles[currentMentor].name, "กำลังนึกภาพเพื่อเขียนจดหมายตอบ...", "bg-pink-50 dark:bg-purple-950/40 animate-pulse text-pink-600 dark:text-pink-400", loadingMsgId);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            try {
+                const response = await callGemini(userText, mentorProfiles[currentMentor].instruction);
+                // ลบข้อความดาวน์โหลดเดิมออกและแทนที่ด้วยผลลัพธ์จาก API
+                const loaderEl = document.getElementById(loadingMsgId);
+                if (loaderEl) loaderEl.remove();
+                
+                appendChatMessage(mentorProfiles[currentMentor].name, response, "bg-purple-100/60 dark:bg-purple-950/30 text-slate-700 dark:text-slate-300");
+            } catch (err) {
+                const loaderEl = document.getElementById(loadingMsgId);
+                if (loaderEl) loaderEl.remove();
+                appendChatMessage("ผู้ช่วย", "เกิดข้อผิดพลาดในการเชื่อมโยงดินแดนปัญญาประดิษฐ์ โปรดลองถามใหม่อีกรอบนะจ๊ะเด็กดี!", "bg-rose-50 text-rose-500 border border-rose-100");
+            }
+            
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function appendChatMessage(sender, text, classes, id = "") {
+            const messageElement = document.createElement("div");
+            if (id) messageElement.id = id;
+            messageElement.className = `chat-msg p-2.5 rounded-xl ${classes}`;
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${formatMarkdown(text)}`;
+            chatBox.appendChild(messageElement);
+        }
+
+        // ตัวฟอร์แมตมาร์กดาวน์อย่างง่ายสำหรับแชทบ็อกซ์
+        function formatMarkdown(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/`([^`]+)`/g, '<code class="bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded">$1</code>')
+                .replace(/\n/g, '<br>');
+        }
+
+        // ฟังก์ชันแสดงกล่องแจ้งเตือนของระบบ (แบบไม่ใช่ window.alert เพื่อกันปัญหากล่องบล็อก iframe)
+        function alertUser(msg) {
+            const alertBox = document.createElement("div");
+            alertBox.className = "fixed bottom-5 right-5 z-50 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4.5 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-10 opacity-0 flex items-center gap-2 max-w-sm font-black text-sm";
+            alertBox.innerHTML = `<i class="fa-solid fa-star animate-spin text-yellow-300"></i> <span>${msg}</span>`;
+            document.body.appendChild(alertBox);
+            
+            // อนิเมชันเลื่อนขึ้น
+            setTimeout(() => {
+                alertBox.classList.remove('translate-y-10', 'opacity-0');
+            }, 100);
+
+            // ปิดตัวเองใน 3 วินาที
+            setTimeout(() => {
+                alertBox.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => alertBox.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
